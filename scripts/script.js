@@ -16,22 +16,28 @@ document.addEventListener("DOMContentLoaded", function(){
         word2hidden += "_ ";
     }
     
+    let guessedLetter = "";
+
     document.getElementById("player1word").innerText = word1hidden;
     document.getElementById("player2word").innerText = word2hidden;
     
     Guess = (event) => {
         event.preventDefault();
+
     
         if(event.target.id == "player1form"){
-            if(word2.includes(document.getElementById("player1guess").value)){
+            guessedLetter = document.getElementById("player1guess").value;
+            guessedLetter = guessedLetter.toUpperCase();
+            console.log (guessedLetter)
+            if(word2.includes(guessedLetter)){
                 for (let i = 0; i < word2.length; i++) {
-                    if (word2[i] == document.getElementById("player1guess").value) {
+                    if (word2[i] == guessedLetter) {
                         console.log(i);
                     
                         // Split word2hidden into an array for easy modification
                         let hiddenArray = word2hidden.split("");
                     
-                        hiddenArray[i * 2] = document.getElementById("player1guess").value;
+                        hiddenArray[i * 2] = guessedLetter;
                     
                         word2hidden = hiddenArray.join("");
 
@@ -47,20 +53,24 @@ document.addEventListener("DOMContentLoaded", function(){
                     document.getElementById("player2guesses").innerHTML += " Spelare 1 förlorade"
                 } else{
                     player1WrongGuesses++;
-                    document.getElementById("player2guesses").innerHTML += document.getElementById("player1guess").value;
+                    document.getElementById("player2guesses").innerHTML += guessedLetter;
                     document.getElementById("player2img").src = `/images/${player1WrongGuesses + 1}.png`;
                 }
             }
             document.getElementById("player1guess").value = "";
     
         } else if(event.target.id == "player2form"){
-            if(word1.includes(document.getElementById("player2guess").value)){
+            guessedLetter = document.getElementById("player2guess").value;
+            guessedLetter = guessedLetter.toUpperCase();
+            console.log(guessedLetter);
+
+            if(word1.includes(guessedLetter)){
                 for (let i = 0; i < word1.length; i++) {
-                    if (word1[i] == document.getElementById("player2guess").value) {                    
+                    if (word1[i] == guessedLetter) {                    
                         // Split word2hidden into an array for easy modification
                         let hiddenArray = word1hidden.split("");
                     
-                        hiddenArray[i * 2] = document.getElementById("player2guess").value;
+                        hiddenArray[i * 2] = guessedLetter;
                     
                         word1hidden = hiddenArray.join("");
                         document.getElementById("player1word").innerText = word1hidden;
