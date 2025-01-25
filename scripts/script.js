@@ -3,9 +3,13 @@ const newGameButton = document.getElementById('newGame');
 
 newGameButton.addEventListener('click', newGameFunction);
 
+newGameFunction();
+
 function newGameFunction (){
-     console.log('New game')
- } 
+     
+     document.getElementById("player2guesses").innerHTML = "";  //Empty guesses from last game
+     document.getElementById("player1guesses").innerHTML = "";  //Empty guesses from last game
+     
 
     //List with words
     const wordList =["SOL", "BOK", "HUS", "BIL", "TRÄD", "VATTEN", "GLAS", "STOL", "KATT", "HUND", 
@@ -122,4 +126,4 @@ function newGameFunction (){
             document.getElementById("player2guess").value = "";
         }
     }
-})
+}})
