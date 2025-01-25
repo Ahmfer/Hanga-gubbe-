@@ -2,36 +2,41 @@ document.addEventListener("DOMContentLoaded", function(){
 const newGameButton = document.getElementById('newGame');
 
 newGameButton.addEventListener('click', newGameFunction);
+//List with words
+const wordList =["SOL", "BOK", "HUS", "BIL", "TRÄD", "VATTEN", "GLAS", "STOL", "KATT", "HUND", 
+    "LISTA", "DATOR","BÅT", "PENNA", "BORD", "HAV", "MOLN", "DATOR", "SKED", "BUSS", "FILM",  
+    "LJUS", "VÄGG", "TÅG", "LINJE", "GRÄS", "KAKA", "SKO", "FISK", "LAMPA", "KLOCKA", 
+    "MAT", "FRUKT", "TALL", "BOLL", "VÄSKA", "RÖK", "BÄNK", "KNIV", "SKÅL", "TAK", "DOKTOR",
+     "VÄG",  "HJUL", "FLAGGA", "SÄNG", "KOPP", "LUFT"];
 
 newGameFunction();
 
 function newGameFunction (){
-     
+    var player1WrongGuesses = 0;
+    var player2WrongGuesses = 0;
+
      document.getElementById("player2guesses").innerHTML = "";  //Empty guesses from last game
      document.getElementById("player1guesses").innerHTML = "";  //Empty guesses from last game
-     
+     document.getElementById("player1guess").disabled = false;  //Enables input field
+     document.getElementById("player2guess").disabled = false;  //Enables input field
+     document.getElementById("Player1").innerHTML = "Spelare 1"; //Removes 'Win/Lose'
+     document.getElementById("Player2").innerHTML = "Spelare 2"; //Removes 'Win/Lose'
+     document.getElementById("player1img").src = `/images/${player1WrongGuesses + 1}.png`;  //Start picture
+     document.getElementById("player2img").src = `/images/${player1WrongGuesses + 1}.png`;  //Starat picture
 
-    //List with words
-    const wordList =["SOL", "BOK", "HUS", "BIL", "TRÄD", "VATTEN", "GLAS", "STOL", "KATT", "HUND", 
-        "LISTA", "DATOR","BÅT", "PENNA", "BORD", "HAV", "MOLN", "DATOR", "SKED", "BUSS", "FILM",  
-        "LJUS", "VÄGG", "TÅG", "LINJE", "GRÄS", "KAKA", "SKO", "FISK", "LAMPA", "KLOCKA", 
-        "MAT", "FRUKT", "TALL", "BOLL", "VÄSKA", "RÖK", "BÄNK", "KNIV", "SKÅL", "TAK", "DOKTOR",
-         "VÄG",  "HJUL", "FLAGGA", "SÄNG", "KOPP", "LUFT"];
     
     function getRandomInt(max) {
     return Math.floor(Math.random() * max);
     };
 
     let max = wordList.length;
-    console.log(getRandomInt(max));
 
     //Random words
     let word1 = wordList[getRandomInt(max)];
     let word2 = wordList[getRandomInt(max)];
     console.log(word1 +" " + word2);
     
-    var player1WrongGuesses = 0;
-    var player2WrongGuesses = 0;
+    
     
     var word1hidden = "";
     for (let i = 0; i < word1.length; i++) {
@@ -77,12 +82,15 @@ function newGameFunction (){
                 if(!(word2hidden.includes("_"))){
                     
                     document.getElementById("Player1").innerHTML += " VINNER";
-                    
+                    document.getElementById("player1guess").disabled = true;
+                    document.getElementById("player2guess").disabled = true;
                 }
             }else{
                 if(player1WrongGuesses == 5){
                     
                     document.getElementById("Player1").innerHTML += " FÖRLORADE";
+                    document.getElementById("player1guess").disabled = true;
+                    document.getElementById("player2guess").disabled = true;
                 } else{
                     player1WrongGuesses++;
                     document.getElementById("player2guesses").innerHTML += guessedLetter;
@@ -112,11 +120,15 @@ function newGameFunction (){
                 if(!(word1hidden.includes("_"))){
                     
                     document.getElementById("Player2").innerHTML += " VINNER";
+                    document.getElementById("player1guess").disabled = true;
+                    document.getElementById("player2guess").disabled = true;
                 }            
             }else{
                 if(player2WrongGuesses == 5){
                     
                     document.getElementById("Player2").innerHTML += " FÖRLORADE";
+                    document.getElementById("player1guess").disabled = true;
+                    document.getElementById("player2guess").disabled = true;
                 } else{
                     player2WrongGuesses++;
                     document.getElementById("player1guesses").innerHTML += document.getElementById("player2guess").value;
