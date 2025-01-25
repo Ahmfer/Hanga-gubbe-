@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(){
-    //Might wanna make this dynamic
-    //var word1 = "CODING";
-    //var word2 = "PC";
+   
     //List with words
     const wordList =["SOL", "BOK", "HUS", "BIL", "TRÄD", "VATTEN", "GLAS", "STOL", "KATT", "HUND", 
         "LISTA", "DATOR","BÅT", "PENNA", "BORD", "HAV", "MOLN", "DATOR", "SKED", "BUSS", "FILM",  
