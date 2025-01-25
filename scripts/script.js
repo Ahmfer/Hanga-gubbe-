@@ -1,5 +1,12 @@
 document.addEventListener("DOMContentLoaded", function(){
-   
+const newGameButton = document.getElementById('newGame');
+
+newGameButton.addEventListener('click', newGameFunction);
+
+function newGameFunction (){
+     console.log('New game')
+ } 
+
     //List with words
     const wordList =["SOL", "BOK", "HUS", "BIL", "TRÄD", "VATTEN", "GLAS", "STOL", "KATT", "HUND", 
         "LISTA", "DATOR","BÅT", "PENNA", "BORD", "HAV", "MOLN", "DATOR", "SKED", "BUSS", "FILM",  
@@ -36,6 +43,8 @@ document.addEventListener("DOMContentLoaded", function(){
 
     document.getElementById("player1word").innerText = word1hidden;
     document.getElementById("player2word").innerText = word2hidden;
+
+    
     
     Guess = (event) => {
         event.preventDefault();
@@ -62,13 +71,14 @@ document.addEventListener("DOMContentLoaded", function(){
                 }
                 //If word doesent contain any udnerscore, end game
                 if(!(word2hidden.includes("_"))){
-                    //document.getElementById("player2guesses").innerHTML += " Spelare 1 vann!"
+                    
                     document.getElementById("Player1").innerHTML += " VINNER";
                     
                 }
             }else{
                 if(player1WrongGuesses == 5){
-                    document.getElementById("player2guesses").innerHTML += " Spelare 1 förlorade"
+                    
+                    document.getElementById("Player1").innerHTML += " FÖRLORADE";
                 } else{
                     player1WrongGuesses++;
                     document.getElementById("player2guesses").innerHTML += guessedLetter;
@@ -96,12 +106,13 @@ document.addEventListener("DOMContentLoaded", function(){
                 }
                 //If word doesent contain any udnerscore, end game
                 if(!(word1hidden.includes("_"))){
-                    //document.getElementById("player1guesses").innerHTML += " Spelare 2 vann!"
+                    
                     document.getElementById("Player2").innerHTML += " VINNER";
                 }            
             }else{
                 if(player2WrongGuesses == 5){
-                    document.getElementById("player1guesses").innerHTML += " Spelare 2 förlorade"
+                    
+                    document.getElementById("Player2").innerHTML += " FÖRLORADE";
                 } else{
                     player2WrongGuesses++;
                     document.getElementById("player1guesses").innerHTML += document.getElementById("player2guess").value;
