@@ -1,7 +1,25 @@
 document.addEventListener("DOMContentLoaded", function(){
     //Might wanna make this dynamic
-    var word1 = "CODING";
-    var word2 = "PC";
+    //var word1 = "CODING";
+    //var word2 = "PC";
+    //List with words
+    const wordList =["SOL", "BOK", "HUS", "BIL", "TRÄD", "VATTEN", "GLAS", "STOL", "KATT", "HUND", 
+        "LISTA", "DATOR","BÅT", "PENNA", "BORD", "HAV", "MOLN", "DATOR", "SKED", "BUSS", "FILM",  
+        "LJUS", "VÄGG", "TÅG", "LINJE", "GRÄS", "KAKA", "SKO", "FISK", "LAMPA", "KLOCKA", 
+        "MAT", "FRUKT", "TALL", "BOLL", "VÄSKA", "RÖK", "BÄNK", "KNIV", "SKÅL", "TAK", "DOKTOR",
+         "VÄG",  "HJUL", "FLAGGA", "SÄNG", "KOPP", "LUFT"];
+    
+    function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+    };
+
+    let max = wordList.length;
+    console.log(getRandomInt(max));
+
+    //Random words
+    let word1 = wordList[getRandomInt(max)];
+    let word2 = wordList[getRandomInt(max)];
+    console.log(word1 +" " + word2);
     
     var player1WrongGuesses = 0;
     var player2WrongGuesses = 0;
