@@ -62,7 +62,9 @@ document.addEventListener("DOMContentLoaded", function(){
                 }
                 //If word doesent contain any udnerscore, end game
                 if(!(word2hidden.includes("_"))){
-                    document.getElementById("player2guesses").innerHTML += " Spelare 1 vann!"
+                    //document.getElementById("player2guesses").innerHTML += " Spelare 1 vann!"
+                    document.getElementById("Player1").innerHTML += " VINNER";
+                    
                 }
             }else{
                 if(player1WrongGuesses == 5){
@@ -94,7 +96,8 @@ document.addEventListener("DOMContentLoaded", function(){
                 }
                 //If word doesent contain any udnerscore, end game
                 if(!(word1hidden.includes("_"))){
-                    document.getElementById("player1guesses").innerHTML += " Spelare 2 vann!"
+                    //document.getElementById("player1guesses").innerHTML += " Spelare 2 vann!"
+                    document.getElementById("Player2").innerHTML += " VINNER";
                 }            
             }else{
                 if(player2WrongGuesses == 5){
